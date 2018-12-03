@@ -27,6 +27,9 @@ import javax.swing.JOptionPane;
 
 import java.util.ArrayList;
 
+/**
+ * GUI that visualizes the main game play loop
+ */
 public class PlayFrame {
 	
 	private JFrame frame;
@@ -42,16 +45,29 @@ public class PlayFrame {
 	private JLabel player_weapon_img;
 	private JLabel opponent_weapon_img;
 	
+	/**
+	 * Function to dynamically change Description JLabel of GUI
+	 * @param text String to change JLabel to
+	 */
 	public void setDescText(String text) {
 		description.setText(text);
 		frame.add(description);
 	}
 	
+	/**
+	 * Function to dynamically change Message JLabel of GUI
+	 * @param text String to change JLabel to
+	 */
 	public void setMessage(String text) {
 		message.setText(text);
 		frame.add(message);
 	}
 	
+	/**
+	 * A utility function to end the game if result[0] returns a game-terminating character
+	 * @param game The main game object
+	 * @throws InterruptedException in case there are any errors with System.exit(0)
+	 */
 	public void checkStatus(Game game) throws InterruptedException {
 		String status = game.getStatus();	
 		if(status == "l") {
@@ -67,6 +83,11 @@ public class PlayFrame {
 		}
 	}
 	
+	/**
+	 * Function to dynamically change the Weapon Images of GUI
+	 * @param move Player's move choice
+	 * @param op_move Opponent's move choice
+	 */
 	public void setWeaponImages(Move move, Move op_move) {
 		switch(move) {
 		case POTION:
@@ -91,7 +112,11 @@ public class PlayFrame {
 			break;
 		}
 	}
-		
+	
+	/**
+	 * Constructor to create the updated GUI and continue play of the game
+	 * @param game Main game instance
+	 */
 	public PlayFrame(Game game) {    
 		frame = new JFrame("Kwest"); 
 		panel = new JPanel();
@@ -170,7 +195,6 @@ public class PlayFrame {
 				try {
 					checkStatus(game);
 				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}          
@@ -190,7 +214,6 @@ public class PlayFrame {
 				try {
 					checkStatus(game);
 				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}          
@@ -210,7 +233,6 @@ public class PlayFrame {
 				try {
 					checkStatus(game);
 				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}

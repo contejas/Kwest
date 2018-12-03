@@ -21,6 +21,9 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 
+/**
+ * GUI shown at start of project to explain rules and start game
+ */
 public class LoginFrame {
 	
 	private JFrame frame;
@@ -34,6 +37,10 @@ public class LoginFrame {
 	private JLabel label7;
 	private JLabel label8;
 	
+	/**
+	 * Constructor to initialize and build Frame
+	 * @param game Main game instance 
+	 */
 	public LoginFrame(Game game) {    
 		frame = new JFrame("Kwest Start Screen");
 		button = new JButton("START");    
@@ -69,7 +76,7 @@ public class LoginFrame {
 		
 		label8 = new JLabel();
 		label8.setText("AP Computer Science Final Project by Tejas Shah and Nehemiah Elias");
-		label8.setBounds(10,20,500,500);
+		label8.setBounds(10,80,500,500);
 		
 		frame.add(label1);
 		frame.add(label2);
@@ -78,6 +85,7 @@ public class LoginFrame {
 		frame.add(label5);
 		frame.add(label6);
 		frame.add(label7);
+		frame.add(label8);
 		frame.add(button);    
 		frame.setBackground(Color.CYAN);
 		frame.setSize(500,500);
@@ -94,6 +102,9 @@ public class LoginFrame {
 		});
 	}
 	
+	/**
+	 * Simple function to destroy Login Frame upon starting the game
+	 */
 	public void destroy() {
 		frame.dispose();
 	}

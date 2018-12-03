@@ -13,6 +13,9 @@ package com.kwest;
  * values.
  */
 
+/**
+ * Enum of all the different Move choices a player makes
+ */
 public enum Move {
 	SHIELD, SWORD, POTION, // normal gameplay moves
 	CHARGE, STAY, // Charge moves

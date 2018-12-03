@@ -12,6 +12,9 @@ package com.kwest;
  * RUN THIS PROGRAM TO PLAY THE GAME.
  */
 
+/**
+ * Class uses to run the entire project
+ */
 public class Main {
 	public static void main(String[] args) {
 		Game game = new Game();	

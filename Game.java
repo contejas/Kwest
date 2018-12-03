@@ -65,7 +65,11 @@ public class Game {
 		}
 		return("ERROR");
 	}
-		
+	
+	/**
+	 * Operation to have the CPU opponent pick a move and send it to the game logic
+	 * @return the opponent's randomly generated move
+	 */
 	public Move opponentMove() {
 		ArrayList<Move> moves;
 		if(op_energy == 0) {
@@ -90,6 +94,10 @@ public class Game {
 		return(op_move);
 	}
 	
+	/**
+	 * Describes all of the primary Moves that the game values allow
+	 * @return ArrayList of all moves that player is allowed to pick from
+	 */
 	public static ArrayList<Move> availableMoves() {
 		ArrayList<Move> moves;
 		if(over_shield != 5) {
@@ -115,12 +123,10 @@ public class Game {
 		return(moves);
 	}
 	
-	public Move yourMove(ArrayList<Move> available_moves) {
-		System.out.print("\nWhat's your move? ");
-		String input = sc.next().toLowerCase();
-		return(Move.SHIELD);
-	}
-	
+	/**
+	 * Models a deadlock situation and sends the outcome to the main game logic
+	 * @return Array of the status and message given the outcome
+	 */
 	public static String[] deadlockMove() {
 		String[] result = new String[2];
 		int chance = rand.nextInt(2);
@@ -134,6 +140,10 @@ public class Game {
 		return(result);
 	}
 	
+	/**
+	 * Models a charging situation and sends the outcome to the main game logic
+	 * @return Array of the status and message given the outcome
+	 */
 	public static String[] chargeMove() {
 		String[] result = new String[2];
 		int chance = rand.nextInt(2);
@@ -147,6 +157,10 @@ public class Game {
 		return(result);
 	}
 	
+	/**
+	 * Models a parry situation and sends the outcome to the main game logic
+	 * @return Array of the status and message given the outcome
+	 */
 	public static String[] parryMove() {
 		String[] result = new String[2];
 		int chance = rand.nextInt(2);
@@ -160,6 +174,11 @@ public class Game {
 		return(result);
 	}
 	
+	/**
+	 * The main game logic - a standard move operation and sending the response to the GUI
+	 * @param your_move The player's move choice in move enum notation
+	 * @param op_move The opponent's move choice in move enum notation
+	 */
 	public void playMove(Move your_move, Move op_move) { // returns ["w", message] if win, ["l", message] if lost, else ["n", message] if no winner yet
 		String[] result = new String[2];
 		if (your_move == Move.POTION) {
@@ -229,14 +248,26 @@ public class Game {
         message = result[1];
 	}
 	
+	/**
+	 * Returns the player's current energy level
+	 * @return Game value of player's energy
+	 */
 	public int getEnergyLevel() {
 		return(energy);
 	}
 	
+	/**
+	 * Returns status, or if the player has won, lost, or if play should continue
+	 * @return Game value of status as a character (but formatted as a String)
+	 */
 	public String getStatus() {
 		return(status);
 	}
 	
+	/**
+	 * Returns message, or the lengthy version of explaining the new game progression
+	 * @return Game value of message as String
+	 */
 	public String getMessage() {
 		return(message);
 	}
