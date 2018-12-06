@@ -1,7 +1,7 @@
 package com.kwest;
 
 /**
- * Tejas Shah
+ * Tejas Shah and Nehemiah Elias
  * APCS
  * Mr. Hunter
  * PlayFrame.java
@@ -15,7 +15,11 @@ package com.kwest;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.net.URL;
 
+import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -87,28 +91,43 @@ public class PlayFrame {
 	 * Function to dynamically change the Weapon Images of GUI
 	 * @param move Player's move choice
 	 * @param op_move Opponent's move choice
+	 * @throws IOException 
 	 */
-	public void setWeaponImages(Move move, Move op_move) {
+	public void setWeaponImages(Move move, Move op_move) throws IOException {
+		URL url;
+		BufferedImage image;
 		switch(move) {
 		case POTION:
-			player_weapon_img.setIcon(new ImageIcon("C:/users/200322103/workspace/Kwest/src/com/kwest/Kwest_Potion.png"));
+			url = getClass().getResource("Kwest_Potion.png");
+			image = ImageIO.read(url);
+			player_weapon_img.setIcon(new ImageIcon(image));
 			break;
 		case SWORD:
-			player_weapon_img.setIcon(new ImageIcon("C:/users/200322103/workspace/Kwest/src/com/kwest/Kwest_Player_Sword.png"));
+			url = getClass().getResource("Kwest_Player_Sword.png");
+			image = ImageIO.read(url);
+			player_weapon_img.setIcon(new ImageIcon(image));
 			break;
 		case SHIELD:
-			player_weapon_img.setIcon(new ImageIcon("C:/users/200322103/workspace/Kwest/src/com/kwest/Kwest_Shield.png"));
+			url = getClass().getResource("Kwest_Shield.png");
+			image = ImageIO.read(url);
+			player_weapon_img.setIcon(new ImageIcon(image));
 			break;
 		}
 		switch(op_move) {
 		case POTION:
-			opponent_weapon_img.setIcon(new ImageIcon("C:/users/200322103/workspace/Kwest/src/com/kwest/Kwest_Potion.png"));
+			url = getClass().getResource("Kwest_Potion.png");
+			image = ImageIO.read(url);
+			opponent_weapon_img.setIcon(new ImageIcon(image));
 			break;
 		case SWORD:
-			opponent_weapon_img.setIcon(new ImageIcon("C:/users/200322103/workspace/Kwest/src/com/kwest/Kwest_Enemy_Sword.png"));
+			url = getClass().getResource("Kwest_Enemy_Sword.png");
+			image = ImageIO.read(url);
+			opponent_weapon_img.setIcon(new ImageIcon(image));
 			break;
 		case SHIELD:
-			opponent_weapon_img.setIcon(new ImageIcon("C:/users/200322103/workspace/Kwest/src/com/kwest/Kwest_Shield.png"));
+			url = getClass().getResource("Kwest_Shield.png");
+			image = ImageIO.read(url);
+			opponent_weapon_img.setIcon(new ImageIcon(image));
 			break;
 		}
 	}
@@ -144,12 +163,27 @@ public class PlayFrame {
 		panel.add(player_labeler);
 		
 		player_img = new JLabel();
-		player_img.setIcon(new ImageIcon("C:/users/200322103/workspace/Kwest/src/com/kwest/Kwest_Player.png"));
+		URL url = getClass().getResource("Kwest_Player.png");
+		BufferedImage image = null;
+		try {
+			image = ImageIO.read(url);
+		} catch (IOException e2) {
+			// TODO Auto-generated catch block
+			e2.printStackTrace();
+		}
+		player_img.setIcon(new ImageIcon(image));
 		player_img.setBounds(-30, 200, 200, 200);
 		panel.add(player_img);
 		
 		opponent_img = new JLabel();
-		opponent_img.setIcon(new ImageIcon("C:/users/200322103/workspace/Kwest/src/com/kwest/Kwest_Enemy.png"));
+		url = getClass().getResource("Kwest_Enemy.png");
+		try {
+			image = ImageIO.read(url);
+		} catch (IOException e2) {
+			// TODO Auto-generated catch block
+			e2.printStackTrace();
+		}
+		opponent_img.setIcon(new ImageIcon(image));
 		opponent_img.setBounds(315, 200, 200, 200);
 		panel.add(opponent_img);
 		
@@ -189,7 +223,12 @@ public class PlayFrame {
 				String op_move_str = game.moveToString(op_move);
 				frame.dispose();
 				PlayFrame newframe = new PlayFrame(game);
-				newframe.setWeaponImages(Move.SHIELD, op_move);
+				try {
+					newframe.setWeaponImages(Move.SHIELD, op_move);
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				newframe.setDescText("You picked " + move_str + ", Your energy level is now " + game.getEnergyLevel() + ", your opponent chose " + op_move_str);
 				newframe.setMessage(game.getMessage());
 				try {
@@ -208,7 +247,12 @@ public class PlayFrame {
 				String op_move_str = game.moveToString(op_move);
 				frame.dispose();
 				PlayFrame newframe = new PlayFrame(game);
-				newframe.setWeaponImages(Move.SWORD, op_move);
+				try {
+					newframe.setWeaponImages(Move.SWORD, op_move);
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				newframe.setDescText("You picked " + move_str + ", Your energy level is now " + game.getEnergyLevel() + ", your opponent chose " + op_move_str);
 				newframe.setMessage(game.getMessage());
 				try {
@@ -227,7 +271,12 @@ public class PlayFrame {
 				String op_move_str = game.moveToString(op_move);
 				frame.dispose();
 				PlayFrame newframe = new PlayFrame(game);
-				newframe.setWeaponImages(Move.POTION, op_move);
+				try {
+					newframe.setWeaponImages(Move.POTION, op_move);
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				newframe.setDescText("You picked " + move_str + ", Your energy level is now " + game.getEnergyLevel() + ", your opponent chose " + op_move_str);
 				newframe.setMessage(game.getMessage());
 				try {

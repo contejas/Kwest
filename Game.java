@@ -1,7 +1,7 @@
 package com.kwest;
 
 /**
- * Tejas Shah
+ * Tejas Shah and Nehemiah Elias
  * APCS
  * Mr. Hunter
  * Game.java
@@ -30,8 +30,8 @@ public class Game {
 	
     public static int energy = 0;
     public static int op_energy = 0;
-    public static int over_shield = 0;
-    public static int shield_durability = 7;
+    public static int over_shield = 0; // system in place to punish overuse of shield
+    public static int shield_durability = 7; 
     public static int sword_durability = 9;
     public static int potion_durability = 12;
 	

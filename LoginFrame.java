@@ -1,7 +1,7 @@
 package com.kwest;
 
 /**
- * Tejas Shah
+ * Tejas Shah and Nehemiah Elias
  * APCS
  * Mr. Hunter
  * LoginFrame.java
